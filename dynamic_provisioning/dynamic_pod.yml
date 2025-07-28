@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tondu-pod
+spec:
+  containers:
+  - name: tondu-container
+    image: sonambewafaa/photos-app:v2
+    volumeMounts:
+    - mountPath: /app/photos
+      name: photos-volume
+  volumes:
+  - name: photos-volume
+    persistentVolumeClaim:
+      claimName: tondu-pvc
+      readOnly: false

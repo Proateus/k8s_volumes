@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-pod
+  namespace: tanishka-ns
+spec:
+  containers:
+  - name: emptydir-container
+    image: sonambewafaa/photos-app:v2 
+    volumeMounts:
+    - mountPath: /app/photos
+      name: photos-volume
+  volumes:
+  - name: photos-volume
+    emptyDir:
+      medium: Memory
+      sizeLimit: 1Gi
